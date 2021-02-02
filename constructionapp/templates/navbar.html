@@ -1,0 +1,59 @@
+<style>
+    
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    nav{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        min-height: 8vh;
+        background-color: green;
+        font-family: 'Poppins', sans-serif;
+
+    }
+    .logo{
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        font-size: 30px;
+        
+    }
+    .nav-links{
+        display: flex;
+        justify-content: space-around;
+        width: 30%;
+    }
+    .nav-links li{
+        list-style: none;
+    }
+    .nav-links a{
+        color: rgb(226, 226, 226);
+        text-decoration: none;
+        letter-spacing: 2px;
+        font-weight: bold;
+        font-size: 17px;
+    }
+</style>
+<nav class="navbar">
+    <div class="logo">
+        <h4>TimberLinks</h4>
+
+    </div>
+    <ul class="nav-links">
+        <li>
+            <a href="{% url 'home' %}">Home</a>
+        </li>
+        <li>
+            <a href="#">About Us</a>
+        </li>
+        <li>
+            <a href="#">Our Team</a>
+        </li>
+        <li>
+            <a href="#">Contact Us</a>
+        </li>
+    </ul>
+</nav>
