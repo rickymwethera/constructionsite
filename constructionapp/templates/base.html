@@ -1,8 +1,32 @@
-{% load bootstrap4 %}
 <!DOCTYPE html>
+{% load bootstrap4 %}
+{% load static %}
+
 <html>
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+<script type="text/javascript">
+    var user = '{{request.user}}'
+
+    function getToken(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getToken('csrftoken');
+</script>
 
   {% if title %}
   <title>Contruction Site - {{title}}</title>
@@ -20,9 +44,11 @@
     
     {% block content %} <h1 class='text-center'>News for {{date|date:"l d-F Y"}}</h1> {%endblock%}
 
-    {% block scripts %}
+    {% block scripts %} {{block.super}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
      {% bootstrap_javascript %}
+     <script type="text/javascript" src="{% static 'js/cart.js' %}" ></script>
     {% endblock %}
 </body>
 </html>

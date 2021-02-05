@@ -1,3 +1,5 @@
+{% load bootstrap4 %}
+{% load static %}
 <style>
     
     *{
@@ -36,6 +38,12 @@
         font-weight: bold;
         font-size: 17px;
     }
+    .hello-msg{
+        font-size: 18px;
+        color: #fff;
+        margin-right: 20px;
+    }
+    
 </style>
 <nav class="navbar">
     <div class="logo">
@@ -46,14 +54,16 @@
         <li>
             <a href="{% url 'home' %}">Home</a>
         </li>
+        
         <li>
-            <a href="#">About Us</a>
-        </li>
-        <li>
-            <a href="#">Our Team</a>
-        </li>
-        <li>
-            <a href="#">Contact Us</a>
+            <a href="{% url 'cart' %}">
+
+                <img  id="cart-icon" src="{% static 'images/cart.jpeg' %}"style= "float:right;width: 20%; height: 50px;">
+                 </a>
+                <p id="cart-total" style="float: right;">{{cartItems}}</p>
         </li>
     </ul>
+    <span class="hello-msg" >Hello, {{request.user}}</span>
+    <span><a href="{% url 'logout' %}">Logout</a></span>
 </nav>
+
